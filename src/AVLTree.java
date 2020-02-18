@@ -1,4 +1,10 @@
-
+/*
+written by: Adam Maser
+CSC420
+Week 5 Project
+AVLTree.java -- implements an AVLTree
+NOTE: CREATED FROM EXAMPLE IN TEXTBOOK
+ */
 public class AVLTree<E> extends BST<E> {
     /** Create an empty AVL tree using a natural comparator*/
     public AVLTree() { // super() is implicitly called

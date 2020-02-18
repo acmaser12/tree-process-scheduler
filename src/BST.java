@@ -1,4 +1,10 @@
-
+/*
+written by: Adam Maser
+CSC420
+Week 5 Project
+BST.java -- implements Binary Search Tree
+NOTE: CREATED FROM EXAMPLE IN TEXTBOOK
+ */
 public class BST<E> implements Tree<E> {
     protected TreeNode<E> root;
     protected int size = 0;

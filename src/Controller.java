@@ -1,7 +1,7 @@
 /*
 written by: Adam Maser
 CSC 420
-Week 4 Project
+Week 5 Project
 Controller.java - Execution class for process-scheduler
  */
 
@@ -29,7 +29,7 @@ public class Controller {
 
         // create AVLTree of ProcessInfo Objects
         // creating new AVLTree also sorts the objects into AVLTree (see AVLTree class)
-        AVLTree<ProcessInfo> newAVLTree = new AVLTree<ProcessInfo>(processes);
+        AVLTree<ProcessInfo> newAVLTree = new AVLTree<>(processes);
 
         // output AVLTree by level
         printAVLTree(newAVLTree);
@@ -40,7 +40,6 @@ public class Controller {
         // loop through and print the results of each process
         System.out.println("\n");
         for (ProcessInfo finishedProcess : finishedProcesses) {
-            System.out.println("Process:");
             System.out.println(finishedProcess.displayCompletedInfo());
         }
 
@@ -76,15 +75,15 @@ public class Controller {
 
     private void printAVLTree(AVLTree<ProcessInfo> tree) {
         int levelSize = 1;  // number of elements in level
-        int location = 0;  // location in AVLTreeList
-        int currentLevel = 0;  // current level of AVLTree
+        int location = 0;  // location in tree
+        int currentLevel = 0;  // current level of tree
         Iterator<ProcessInfo> iterator = tree.iterator();
 
-        // loop through list and output each process in each level
+        // iterate through tree and output each process in each level
         while (location < tree.getSize()) {
             System.out.println("Current Level: " + currentLevel);
             for (int i = 0; i < levelSize; i++) {
-                // if the location is bigger than AVLTree, break loop
+                // if the location is bigger than tree, break loop
                 if (location >= tree.getSize()) {
                     break;
                 }
@@ -98,22 +97,26 @@ public class Controller {
     }
 
     private AVLTree<ProcessInfo> executeProcesses(AVLTree<ProcessInfo> tree) {
-        // get iterator
-        Iterator<ProcessInfo> iterator = tree.iterator();
+        // get size of tree
+        int originalSize = tree.getSize();
+
         // create new AVLTree to hold finished processes
         AVLTree<ProcessInfo> completedTree = new AVLTree<>();
 
         // loop through processes until all are complete
-        while (iterator.hasNext()) {
+        while (completedTree.size() < originalSize) {
+            // get iterator
+            Iterator<ProcessInfo> iterator = tree.iterator();
             for (int i = 0; i < tree.getSize(); i++) {
                 ProcessInfo currentProcess = iterator.next();
                 boolean isCompleted = currentProcess.executeProcess((int)System.currentTimeMillis() % 10000);
-                // if completed, add to completedList and remove from AVLTreeList
+                // if completed, add to completedTree and remove from tree
                 if (!isCompleted) {
                     completedTree.insert(currentProcess);
                     tree.remove(currentProcess);
                 }
             }
+
         }
         return completedTree;
     }

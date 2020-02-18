@@ -1,7 +1,7 @@
 /*
 written by: Adam Maser
 CSC420
-Week 4 Project
+Week 5 Project
 ProcessInfo.java -- stores information for each ProcessInfo object
  */
 

@@ -1,4 +1,10 @@
-
+/*
+written by: Adam Maser
+CSC420
+Week 5 Project
+Tree.java -- interface for Tree objects
+NOTE: CREATED FROM EXAMPLE IN TEXTBOOK
+ */
 import java.util.Collection;
 
 public interface Tree<E> extends Collection<E> {
