@@ -6,28 +6,27 @@ BST.java -- implements Binary Search Tree
 NOTE: CREATED FROM EXAMPLE IN TEXTBOOK
  */
 public class BST<E> implements Tree<E> {
-    protected TreeNode<E> root;
-    protected int size = 0;
-    protected java.util.Comparator<E> c;
+    TreeNode<E> root;
+    int size = 0;
+    java.util.Comparator<E> c;
 
     /** Create a default BST with a natural order comparator */
-    public BST() {
+    BST() {
         this.c = (e1, e2) -> ((Comparable<E>)e1).compareTo(e2);
     }
 
     /** Create a BST with a specified comparator */
-    public BST(java.util.Comparator<E> c) {
+    BST(java.util.Comparator<E> c) {
         this.c = c;
     }
 
     /** Create a binary tree from an array of objects */
-    public BST(E[] objects) {
+    BST(E[] objects) {
         this.c = (e1, e2) -> ((Comparable<E>)e1).compareTo(e2);
-        for (int i = 0; i < objects.length; i++)
-            add(objects[i]);
+        for (E object : objects) add(object);
     }
 
-    @Override /** Returns true if the element is in the tree */
+    @Override /* Returns true if the element is in the tree */
     public boolean search(E e) {
         TreeNode<E> current = root; // Start from the root
 
@@ -45,7 +44,7 @@ public class BST<E> implements Tree<E> {
         return false;
     }
 
-    @Override /** Insert element e into the binary tree
+    @Override /* Insert element e into the binary tree
      * Return true if the element is inserted successfully */
     public boolean insert(E e) {
         if (root == null)

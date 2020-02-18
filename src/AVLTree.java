@@ -7,7 +7,7 @@ NOTE: CREATED FROM EXAMPLE IN TEXTBOOK
  */
 public class AVLTree<E> extends BST<E> {
     /** Create an empty AVL tree using a natural comparator*/
-    public AVLTree() { // super() is implicitly called
+    AVLTree() { // super() is implicitly called
     }
 
     /** Create a BST with a specified comparator */
@@ -16,16 +16,16 @@ public class AVLTree<E> extends BST<E> {
     }
 
     /** Create an AVL tree from an array of objects */
-    public AVLTree(E[] objects) {
+    AVLTree(E[] objects) {
         super(objects);
     }
 
-    @Override /** Override createNewNode to create an AVLTreeNode */
+    @Override /* Override createNewNode to create an AVLTreeNode */
     protected AVLTreeNode<E> createNewNode(E e) {
-        return new AVLTreeNode<E>(e);
+        return new AVLTreeNode<>(e);
     }
 
-    @Override /** Insert an element and rebalance if necessary */
+    @Override /* Insert an element and rebalance if necessary */
     public boolean insert(E e) {
         boolean successful = super.insert(e);
         if (!successful)
@@ -193,7 +193,7 @@ public class AVLTree<E> extends BST<E> {
         updateHeight((AVLTreeNode<E>)C);
     }
 
-    @Override /** Delete an element from the binary tree.
+    @Override /* Delete an element from the binary tree.
      * Return true if the element is deleted successfully
      * Return false if the element is not in the tree */
     public boolean delete(E element) {
@@ -267,9 +267,9 @@ public class AVLTree<E> extends BST<E> {
 
     /** AVLTreeNode is TreeNode plus height */
     protected static class AVLTreeNode<E> extends BST.TreeNode<E> {
-        protected int height = 0; // New data field
+        int height = 0; // New data field
 
-        public AVLTreeNode(E o) {
+        AVLTreeNode(E o) {
             super(o);
         }
     }
